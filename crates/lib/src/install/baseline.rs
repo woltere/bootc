@@ -270,7 +270,7 @@ pub(crate) fn install_create_rootfs(
             &mut partitioning_buf,
             r#"size=4MiB, bootable, type={uuid}, name="{label}""#
         )?;
-    } else if cfg!(any(target_arch = "aarch64", target_arch = "s390x")) {
+    } else if cfg!(any(target_arch = "aarch64", target_arch = "s390x", target_arch = "riscv64")) {
         // No bootloader partition is necessary
     } else {
         anyhow::bail!("Unsupported architecture: {}", std::env::consts::ARCH);
